@@ -60,7 +60,7 @@ GRANT ALL PRIVILEGES ON YourDBUser.* TO 'Paypal'@'localhost';
 
 cd /var/www/{yourwebsite}/ipn/
 
-sudo vi login.php
+        sudo vi login.php
 
 You will need to provide the correct credential for your database
 
@@ -69,14 +69,24 @@ You will need to provide the correct credential for your database
         $username = "{YourUsername}";
         $password = "{YourPassword}";
 
-sudo vi ipnconf.php ,  and make sure enable_sandbox is set to false in these first step
- 
-         $enable_sandbox = false;
+enable sandbox mode
 
-this will tell to use the sandbox for your transaction, later when you tested everything and you are ready, you will have to set it to true to enable real tranactions.
+         sudo vi ipnconf.php 
+
+make sure enable_sandbox is set to true in these first step
+
+         $enable_sandbox = true;
+
+this will tell to use the sandbox for your transaction, later when you tested everything and you are ready, you will have to set it to false to enable real tranactions.
 
 
 # Step 3: Setting up your account
+
+Of course you need a Paypal account for that, if not already done, proceed by first signin up
+    https://www.paypal.com
+    
+You will also need to create a developer account on your paypal account:
+    https://developer.paypal.com/tools/sandbox/accounts/ and sign up if need be.
 
 You will need to enable your Instant Payment Notification (IPN) in your paypal account.
 To do so go in the paypal.com website, 
