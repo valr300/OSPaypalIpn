@@ -73,9 +73,11 @@ enable sandbox mode
 
          sudo vi ipnconf.php 
 
-make sure enable_sandbox is set to true in these first step
+make sure enable_sandbox is set to true in these first step, and specify your email(s) address that will be accepted, this should be your paypal email account that will receive the payment.
 
          $enable_sandbox = true;
+         $my_email_addresses = array("{mypaypalemail@example.com}", "{mysecondemail@example.com}");
+
 
 this will tell to use the sandbox for your transaction, later when you tested everything and you are ready, you will have to set it to false to enable real tranactions.
 
@@ -97,5 +99,64 @@ To do so go in the paypal.com website
     .enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
 
 
+# Step 4: Your first test
+
+
+ If you are installing this to use with your Rentals (Complete Rental System) :
+ 
+  edit the "!PaypalConfig" notecard in the Server component.
+  
+  otherwise edit the current "!PaypalConfig" in the component you want to test, 
+  for exemple the "Paypal Donations Box that come with the OSPaypalIpn Box"
+
+  
+  Make sure the TestMode is set to 1, and that you write your "sandbox business email adress" given in your developer account .
+  and notify_url points to your Listener https://{yourwebsite}/ipn/Listener.php
+  and InworldIpn_url points to your inworld api  http://127.0.0.1/ipn/InWorldIPN.php
+  
+  for a complete explanation of the other fields see the Readme in the OSPaypalIpn package inworld.
+  
+  
+        ####################################################
+        # Paypal Configuration  :                                                                                      #
+        # try to keep them shorts as we are limited in osl to 255 char for url & post data #
+        ####################################################
+        TestMode=1                                            # Set to 1 for  SandBoxMode, you must provide your business sandbox mail (https://developer.paypal.com/dashboard/accounts/)
+        Invoice_prefix=RT                                    # Prefix Letters for invoice number, must be unique through all your paypal boxes, invoice are  formated 6 digits  ex:  RT000001
+        currency=USD                                      # Currency,  by default your account Currency will be used ex, if you are from US, no need to specify USD unless you want another currency.
+        cmd=_xclick                                     # command type supported : _donations : Donate Button,   _xclick   : Buy now button  
+        item_name=Rental                                   # Product identification  class
+        item_number=                                      # Product identification , will be the itemnumber of the parcel ( max 8 char)
+        business={MySandboxEmailaddress@example.com}                # Email address used for paypal receiver, or in sandbox mode your sandbox business mail    
+        return=                                                # Return page if any: Ex: return to your online catalog
+        #
+        # ipn config : leave empty if you have'nt install the  github (https://github.com/valr300/paypalIpn) i.e paypal transactions wont be validated,  You'll have to check manually
+        #
+        notify_url=https://{yourwebsite}/ipn/Listener.php           # your server for ipn or empty if none ( must also be set through your account) ex: https://yourserver/ipn/Listener.php
+        InworldIpn_url=http://127.0.0.1/ipn/InWorldIPN.php        # your server to complete transaction inworld    ex : http://127.0.0.1/ipn/InWorldIPN.php 
+        
+
+
+
+ When ready, go inworld and  trigger some rentals, or paypal donations, or whatever you want to test with.
+ When the paypal web page appear, simply proceed, enter your "sandbox personal email"  given in your developer account.
+ after a few seconds yous should see the transactions completed if everything went ok.
+
+ Some points to consider :
+ 
+         . The notify_url must be a https, so you must have configured your ssh on your website in order for this to work,  it will also reject anything that does not match your email address configured in step 2.
+             
+         . The InworkdIpn_Url will reject anything that does not come from local. you should reference InworldIpn_url with 127.0.0.1 as this is not accessible from outside.
+
+         . As stated per paypal, there could be some delay before you receive the IPN, could even take hours or days, so don't expect this to be instantaneous. For more information on how the timedout are defined inworld see the readme tha comes with the OSPaypalIpn package inworld.
+  
+ Later when you tested everything and you are ready :
+ 
+         . you will have to set  TestMode to 0 
+         . as well as the $enable_sandbox = false; in the "'ipnconf.php" to enable real tranactions
+         . replace the business for your real email adresse
+
+         
+ 
 
 
