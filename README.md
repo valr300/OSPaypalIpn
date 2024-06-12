@@ -2,10 +2,13 @@ Notes for installing the OSPaypalIpn
 
 The OSPaypalIpn allow validated Paypal Transaction Inworld OpenSimulator.
 
-In short, it receive the IPN from Paypal, then an inworld script complete the process inworld.
+In short, it receive the IPN from Paypal, then a inworld script complete the process.
 This product can be found in OpenSim at the Valland Shop, see http://www.vallands.ca for more information.
 
-It consist in installing a few  php pages on your secured website (https),  creating a  database.
+It consist in 
+. installing a few php pages on your secured website (https),  
+. creating a database, 
+. configure your paypal account to receive the IPN.
 
 These steps assume you know what you are doing. As I can barely help you myself.
 You must be the owner of your system, as you will need the root power.
@@ -24,7 +27,7 @@ It should be compatible for windows and probably MariaDB, although I haven’t t
 Note that for these steps and further down the road, you really need to know what you are doing, and taking these steps I took here won’t necessarily mean success on your installation. as your installation might be slightly different than mine, however, I think that if I show you what I did, it might help you find what you need to do, adapting these instructions to your own environment. And I am not responsible in any way shape or form on whatever you do on your system. Take backups before proceeding.
 
 
-Step 1: Get the package
+#Step 1: Get the package
 You will need the latest version of OSPaypalIpn, you can get it here: https://github.com/valr300/OSPaypalIpn You can get the folder "ipn" only, the source isn’t needed.
 Substitute the {yourwebsite} by your your web site folder.
 
@@ -39,7 +42,7 @@ sudo cp -r * /var/www/{yourwebsite}/ipn/
 
 make sure your web service can access the file. Acces  should be readable for www-data for nginx.
 
-Step 2: Create the Database
+#Step 2: Create the Database
 Execute the following script in your Database MySql : 
 
 Paypal_Paypals.sql  		will build the database Rental and the Tables
