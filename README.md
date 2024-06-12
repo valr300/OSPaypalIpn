@@ -24,10 +24,27 @@ This document show the installation on:
 
 It should be compatible for windows and probably MariaDB, although I haven’t tested it, and of course the installation will vary, in that case use these notes as a roughly guide.
 
-Note that for these steps and further down the road, you really need to know what you are doing, and taking these steps I took here won’t necessarily mean success on your installation. as your installation might be slightly different than mine, however, I think that if I show you what I did, it might help you find what you need to do, adapting these instructions to your own environment. And I am not responsible in any way shape or form on whatever you do on your system. Take backups before proceeding.
+Note that for these steps and further down the road, you REALLY need to know what you are doing, and taking these steps I took here won’t necessarily mean success on your installation. as your installation might be slightly different than mine, however, I think that if I show you what I did, it might help you find what you need to do, adapting these instructions to your own environment. And I am not responsible in any way shape or form on whatever you do on your system. Take backups before proceeding. 
 
 
-# Step 1: Get the package
+# Step 1: Setting up your account
+
+Of course you need a Paypal account for that! If not already done, proceed by first signin up
+    https://www.paypal.com
+    
+You will also need to create a developer account on your paypal account, this will allow you to do some sandbox test:
+    https://developer.paypal.com/tools/sandbox/accounts/ and sign up if need be.
+
+You will need to enable your Instant Payment Notification (IPN) in your paypal account.
+To do so go in the paypal.com website
+
+    .go into your profile section (the small gear on the right),
+    .select "Sellers Tools" on the white bar, 
+    .then enable "Instant payment Notification",
+    .enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
+
+
+# Step 2: Get the package
 You will need the latest version of OSPaypalIpn, you can get it here: https://github.com/valr300/OSPaypalIpn You can get the folder "ipn" only, the source isn’t needed.
 Substitute the {yourwebsite} by your your web site folder.
 
@@ -42,12 +59,14 @@ sudo cp -r * /var/www/{yourwebsite}/ipn/
 
 make sure your web service can access the file. Acces  should be readable for www-data for nginx.
 
-# Step 2: Create the Database
+
+# Step 3: Create the Database
 Execute the following script in your Database MySql : 
 
 Paypal_Paypals.sql  		will build the database Rental and the Tables
 Paypal_routines.sql     will build the stored procs.  
-Step 3: Create The user database for the Rental database
+
+# Step 4: Create The user database for the Rental database
 execute the following lines.
 
 mysql -u root --password
@@ -56,7 +75,7 @@ mysql -u root --password
 CREATE USER 'YourDBUser'@'localhost' IDENTIFIED BY 'YOURPASSWORD';
 GRANT ALL PRIVILEGES ON YourDBUser.* TO 'Paypal'@'localhost';
 
-# Step 3: Configuring your Listener
+# Step 5: Configuring your Listener
 
 cd /var/www/{yourwebsite}/ipn/
 
@@ -82,24 +101,9 @@ make sure enable_sandbox is set to true in these first step, and specify your em
 this will tell to use the sandbox for your transaction, later when you tested everything and you are ready, you will have to set it to false to enable real tranactions.
 
 
-# Step 3: Setting up your account
-
-Of course you need a Paypal account for that, if not already done, proceed by first signin up
-    https://www.paypal.com
-    
-You will also need to create a developer account on your paypal account:
-    https://developer.paypal.com/tools/sandbox/accounts/ and sign up if need be.
-
-You will need to enable your Instant Payment Notification (IPN) in your paypal account.
-To do so go in the paypal.com website
-
-    .go into your profile section (the small gear on the right),
-    .select "Sellers Tools" on the white bar, 
-    .then enable "Instant payment Notification",
-    .enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
 
 
-# Step 4: Your first test
+# Step 6: Your first test
 
 
  If you are installing this to use with your Rentals (Complete Rental System) :
@@ -141,6 +145,12 @@ To do so go in the paypal.com website
  When ready, go inworld and  trigger some rentals, or paypal donations, or whatever you want to test with.
  When the paypal web page appear, simply proceed, enter your "sandbox personal email"  given in your developer account.
  after a few seconds yous should see the transactions completed if everything went ok.
+ 
+ If everything went ok, you can do the ultimate test in looking in the database :
+ 
+         . select * from Paypal.Paypals order by Payment_date desc
+
+ You should see your avatarname and amont paid on the first line.
 
  Some points to consider :
  
@@ -150,11 +160,31 @@ To do so go in the paypal.com website
 
          . As stated per paypal, there could be some delay before you receive the IPN, could even take hours or days, so don't expect this to be instantaneous. For more information on how the timedout are defined inworld see the readme tha comes with the OSPaypalIpn package inworld.
   
- Later when you tested everything and you are ready :
+
+
+# Step 7: Hopefully you're still following and you got this far.
+
+If you succeesfully tested and everything is ok... congratulation ! It took me months to get there!
+
+  edit the current "!PaypalConfig" in the component you want to be set 
+  
+         set  TestMode=0 
+         business={Yourrealpaypypalemail}
+         
+ edit the "ipnconf.php" to enable real tranactions
  
-         . you will have to set  TestMode to 0 
-         . as well as the $enable_sandbox = false; in the "'ipnconf.php" to enable real tranactions
-         . replace the business for your real email adresse
+         sudo vi ipnconf.php  
+         
+         $enable_sandbox = false; 
+         $my_email_addresses = array("{mypaypalemail@example.com}", "{mysecondemail@example.com}");
+
+ Remember that when ever you want to test you need these 2 configure as Test or Live. If you only Enable test in one, it wont work. 
+
+# Step 8:
+
+ These is no step 8. You're done !.
+
+ 
 
          
  
