@@ -1,4 +1,4 @@
-Notes for installing the OSPaypalIpn
+# Notes for installing the OSPaypalIpn
 
 The OSPaypalIpn allow validated Paypal Transaction Inworld OpenSimulator.
 
