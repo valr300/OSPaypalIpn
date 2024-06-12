@@ -63,14 +63,15 @@ cd /var/www/{yourwebsite}/ipn/
 sudo vi login.php
 
 You will need to provide the correct credential for your database
-`    $servername = "localhost";
-    $database = "Paypal";
-    $username = "{YourUsername}";
-    $password = "{YourPassword}";`
+
+        $servername = "localhost";
+        $database = "Paypal";
+        $username = "{YourUsername}";
+        $password = "{YourPassword}";
 
 sudo vi ipnconf.php ,  and make sure enable_sandbox is set to false in these first step
  
-` $enable_sandbox = false;`
+         $enable_sandbox = false;
 
 this will tell to use the sandbox for your transaction, later when you tested everything and you are ready, you will have to set it to true to enable real tranactions.
 
