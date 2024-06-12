@@ -45,7 +45,8 @@ To do so go in the paypal.com website
 
 
 # Step 2: Get the package
-You will need the latest version of OSPaypalIpn, you can get it here: https://github.com/valr300/OSPaypalIpn You can get the folder "ipn" only, the source isn’t needed.
+You will need the latest version of OSPaypalIpn, you can get it here: https://github.com/valr300/OSPaypalIpn 
+You can get the folder "ipn" only, the source isn’t needed.
 Substitute the {yourwebsite} by your your web site folder.
 
 Create folder /var/www/{yourwebsite}/ipn/ on your linux Machine:
