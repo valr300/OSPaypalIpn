@@ -89,11 +89,12 @@ You will also need to create a developer account on your paypal account:
     https://developer.paypal.com/tools/sandbox/accounts/ and sign up if need be.
 
 You will need to enable your Instant Payment Notification (IPN) in your paypal account.
-To do so go in the paypal.com website, 
-go into your profile section (the small gear on the right),
-select "Sellers Tools" on the white bar, 
-then enable "Instant payment Notification",
-and enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
+To do so go in the paypal.com website
+
+    .go into your profile section (the small gear on the right),
+    .select "Sellers Tools" on the white bar, 
+    .then enable "Instant payment Notification",
+    .enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
 
 
 
