@@ -1,6 +1,6 @@
 # Notes for installing the OSPaypalIpn
 
-The OSPaypalIpn allow validated Paypal Transaction Inworld OpenSimulator.
+The OSPaypalIpn allow validated Paypal Transaction Inworld (OpenSimulator).
 
 In short, it receive the IPN from Paypal, then a inworld script complete the process.
 This product can be found in OpenSim at the Valland Shop, see http://www.vallands.ca for more information.
@@ -17,7 +17,7 @@ This document show the installation on:
 
 -Linux  Ubuntu 22.04.2 LTS"
 
--nginx/1.18.0 (Ubuntu) 
+-nginx/1.18.0 (Ubuntu) with https configured
 
 -MySql Database  8.0.36-0ubuntu0.22.04.1
 
@@ -55,6 +55,34 @@ mysql -u root --password
 
 CREATE USER 'YourDBUser'@'localhost' IDENTIFIED BY 'YOURPASSWORD';
 GRANT ALL PRIVILEGES ON YourDBUser.* TO 'Paypal'@'localhost';
+
+# Step 3: Configuring your Listener
+
+cd /var/www/{yourwebsite}/ipn/
+
+sudo vi login.php
+
+You will need to provide the correct credential for your database
+`    $servername = "localhost";
+    $database = "Paypal";
+    $username = "{YourUsername}";
+    $password = "{YourPassword}";`
+
+sudo vi ipnconf.php ,  and make sure enable_sandbox is set to false in these first step
+ 
+` $enable_sandbox = false;`
+
+this will tell to use the sandbox for your transaction, later when you tested everything and you are ready, you will have to set it to true to enable real tranactions.
+
+
+# Step 3: Setting up your account
+
+You will need to enable your Instant Payment Notification (IPN) in your paypal account.
+To do so go in the paypal.com website, 
+go into your profile section (the small gear on the right),
+select "Sellers Tools" on the white bar, 
+then enable "Instant payment Notification",
+and enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
 
 
 
