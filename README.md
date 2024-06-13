@@ -50,15 +50,15 @@ Note that for these steps and further down the road, you REALLY need to know wha
 
 Of course you need a Paypal account for that! If not already done, proceed by first signin up
     
-    [https://www.paypal.com]
+    [https://www.paypal.com](url)
     
 You will also need to create a developer account on your paypal account, this will allow you to do some sandbox test (sign up if need be) :
 
-    https://developer.paypal.com/home  
+    [https://developer.paypal.com/home](url)  
 
 once that is done, you can get your sandbox accounts, you will need them to make your test
     
-    https://developer.paypal.com/dashboard/
+    [https://developer.paypal.com/dashboard/](url)
 
 select "sandbox accounts" from there, you will use the "Business" account as the one receiving the money, and the "personal" for when your are making payment.
 
@@ -73,7 +73,10 @@ To do so go in the paypal.com website
 
 
 # Step 2: Get the package
-You will need the latest version of OSPaypalIpn, you can get it here: https://github.com/valr300/OSPaypalIpn 
+You will need the latest version of OSPaypalIpn, you can get it here: 
+
+    [https://github.com/valr300/OSPaypalIpn](url)
+    
 You can get the folder "ipn" only, the source isn’t needed.
 Substitute the {yourwebsite} by your your web site folder.
 
