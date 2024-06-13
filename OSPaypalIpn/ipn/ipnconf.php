@@ -1,7 +1,7 @@
 <?php 
 
 //Set this to true to use the sandbox endpoint during testing:
-$enable_sandbox = false;
+$enable_sandbox = true;
 
 // Use this to specify all of the email addresses that you have attached to paypal:
 $my_email_addresses = array("Youpaypalremail@example.com", "yourpaypalemail2@business.example.com");
