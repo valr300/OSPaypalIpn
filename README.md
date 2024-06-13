@@ -66,10 +66,10 @@ Click on  "sandbox accounts" from there, you will use the "Business" account as 
 You will need to enable your Instant Payment Notification (IPN) in your paypal account.
 To do so go in the paypal.com website
 
--go into your profile section (the small gear on the right),
--select "Sellers Tools" on the white bar, 
--then enable "Instant payment Notification",
--enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
+    go into your profile section (the small gear on the right),
+    select "Sellers Tools" on the white bar, 
+    then enable "Instant payment Notification",
+    enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
 
 
 # Step 2: Get the package
@@ -197,11 +197,11 @@ this will tell to use the sandbox for your transaction, later when you tested ev
 
 # Step 7: Hopefully you're still following and you got this far.
 
-If you succeesfully tested and everything is ok... congratulation ! It took me months to get there!
+If you succeesfully tested and everything is ok... congratulation !
 
-  edit the current "!PaypalConfig" in the component you want to be set 
+  edit the current "!PaypalConfig" in the component you want to set 
   
-         set  TestMode=0 
+         TestMode=0 
          business={Yourrealpaypypalemail}
          
  edit the "ipnconf.php" to enable real tranactions
@@ -211,11 +211,9 @@ If you succeesfully tested and everything is ok... congratulation ! It took me m
          $enable_sandbox = false; 
          $my_email_addresses = array("{mypaypalemail@example.com}", "{mysecondemail@example.com}");
 
- Remember that when ever you want to test you need these 2 configure as Test or Live. If you only Enable test in one, it wont work. 
+ Remember that when ever you want to test you need to set these 2  as Test or Live. If you only Enable test in one, it wont work. 
 
-# Step 8:
 
- These is no step 8. You're done !.
 
  
 
