@@ -66,10 +66,10 @@ Click on  "sandbox accounts" from there, you will use the "Business" account as 
 You will need to enable your Instant Payment Notification (IPN) in your paypal account.
 To do so go in the paypal.com website
 
-    .go into your profile section (the small gear on the right),
-    .select "Sellers Tools" on the white bar, 
-    .then enable "Instant payment Notification",
-    .enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
+-go into your profile section (the small gear on the right),
+-select "Sellers Tools" on the white bar, 
+-then enable "Instant payment Notification",
+-enter your IPN listner as "https://{YourWebSite}/ipn/Listener.php"
 
 
 # Step 2: Get the package
