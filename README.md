@@ -27,7 +27,7 @@ This document show the installation on:
 
 ## Good things to know (or where i strugled the most) :
 
-If you are using nginx, make sure your php fits with your nginx
+If you are using nginx, make sure your php version fits with your nginx version
 
     apt list --installed | grep php    or list your current settings with phpinfo(); in a php file
     
