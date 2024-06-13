@@ -1,4 +1,4 @@
-# Notes for installing the OSPaypalIpn
+## Notes for installing the OSPaypalIpn
 
 The OSPaypalIpn allow validated Paypal Transaction Inworld (OpenSimulator).
 
@@ -21,13 +21,24 @@ This document show the installation on:
 
 -MySql Database  8.0.36-0ubuntu0.22.04.1
 
+-PHP Version 8.1.2-1ubuntu2.17
+
+# Good things to know :
+
+If you are using nginx, make sure your php  
+    apt list --installed | grep php    or list your current settings with phpinfo(); in a phpfile
+
+
+
+fits with your current nginx version, as well as your curl version
+
 
 It should be compatible for windows and probably MariaDB, although I haven’t tested it, and of course the installation will vary, in that case use these notes as a roughly guide.
 
 Note that for these steps and further down the road, you REALLY need to know what you are doing, and taking these steps I took here won’t necessarily mean success on your installation. as your installation might be slightly different than mine, however, I think that if I show you what I did, it might help you find what you need to do, adapting these instructions to your own environment. And I am not responsible in any way shape or form on whatever you do on your system. Take backups before proceeding. 
 
 
-# Step 1: Setting up your account
+## Step 1: Setting up your account
 
 Of course you need a Paypal account for that! If not already done, proceed by first signin up
     https://www.paypal.com
