@@ -183,7 +183,18 @@ this will tell to use the sandbox for your transaction, later when you tested ev
  
          . select * from Paypal.Paypal_Stats
 
- You should see your avatarname and amont paid on the first line.
+ You should see your avatarname and amont paid on the first line. 
+ 
+ If you get errors, or nothing happen  check your logs :
+ 
+     cd /var/log/nginx
+     cat error.log
+
+If nothing happens and you get no error in the log :
+
+- make sure you wrote the right email in your !PaypalConfig  ( step 6  business= )
+- and  $my_email_addresses =  in your "ipnconf.php" should be that same email because if the email is not there it will be silently ignored. 
+- also make sure you wrote your IPN listener into your account , see step 2
 
  Some points to consider :
  
@@ -191,6 +202,7 @@ this will tell to use the sandbox for your transaction, later when you tested ev
          . Anything that does not match your email address configured in step 2 will be rejected.
          . The InworkdIpn_Url will reject anything that does not come from local. 
          . You should reference InworldIpn_url with 127.0.0.1 as this is not accessible from outside.
+         . Make sure you have given your IPN Listener into your account as well, see step 2.
          . As stated per paypal, there could be some delay before you receive the IPN, could even take hours or days, so don't expect this to be instantaneous. For more information on how the timedout are defined inworld see the readme tha comes with the OSPaypalIpn package inworld.
   
 
@@ -211,6 +223,7 @@ If you succeesfully tested and everything is ok... congratulation !
          $enable_sandbox = false; 
          $my_email_addresses = array("{mypaypalemail@example.com}", "{mysecondemail@example.com}");
 
+ Make sure your real email is set there in both, if your email is not there, the IPN will be silently ignored, the transactions will still work, but you wont get the notification. 
  Remember that when ever you want to test you need to set these 2  as Test or Live. If you only Enable test in one, it wont work. 
 
 
