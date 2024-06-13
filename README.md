@@ -51,8 +51,16 @@ Note that for these steps and further down the road, you REALLY need to know wha
 Of course you need a Paypal account for that! If not already done, proceed by first signin up
     https://www.paypal.com
     
-You will also need to create a developer account on your paypal account, this will allow you to do some sandbox test:
-    https://developer.paypal.com/tools/sandbox/accounts/ and sign up if need be.
+You will also need to create a developer account on your paypal account, this will allow you to do some sandbox test (sign up if need be) :
+
+    https://developer.paypal.com/home  
+
+once that is done, you can get your sandbox accounts, you will need them to make your test
+    
+    https://developer.paypal.com/dashboard/
+
+select "sandbox accounts" from there, you will use the "Business" account as the one receiving the money, and the "personal" for when your are making payment.
+
 
 You will need to enable your Instant Payment Notification (IPN) in your paypal account.
 To do so go in the paypal.com website
@@ -70,24 +78,29 @@ Substitute the {yourwebsite} by your your web site folder.
 
 Create folder /var/www/{yourwebsite}/ipn/ on your linux Machine:
 
-sudo mkdir /var/www/{yourwebsite}/ipn
+    sudo mkdir /var/www/{yourwebsite}/ipn
+    sudo chown www-data /var/www/{yourwebsite}/ipn
+    
 Put the content of the "ipn" folder in /var/www/{yourwebsite}/ipn/ :
 
-cd {the place you put the package}
-    
-sudo cp -r * /var/www/{yourwebsite}/ipn/
+    cd {the place you put the package}
+    sudo cp -r * /var/www/{yourwebsite}/ipn/
 
 make sure your web service can access the file. Acces  should be readable for www-data for nginx.
 
-
+    sudo chown www-data *.php
+    sudo chgrp www-data *.php
+    
 # Step 3: Create the Database
-Execute the following script in your Database MySql : 
+Execute the following script in your Database MySql, i would suggest using The WorkBench, gonna make your life much easier.
 
 Paypal_Paypals.sql  		will build the database Rental and the Tables
 Paypal_routines.sql     will build the stored procs.  
 
+
+
 # Step 4: Create The user database for the Rental database
-execute the following lines.
+execute the following lines, or simply crete your user with the Workbench
 
 mysql -u root --password
 (enter your mysql password, or if you haven't set password for MySQL server, type "mysql -u root" instead) You can even use MySQL Command Line Client on the Start menu on Windows. After login, create user, or if you prefer proceed to create you user via the Workbench, much easier!.
