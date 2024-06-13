@@ -52,7 +52,7 @@ Of course you need a Paypal account for that! If not already done, proceed by fi
     
     https://www.paypal.com
     
-You will also need to create a developer account on your paypal account, this will allow you to do some sandbox test (sign up if need be) :
+You will also need to create a developer account, this will allow you to do some sandbox test (sign up if need be) :
 
     https://developer.paypal.com/home
 
@@ -60,7 +60,7 @@ once that is done, you can get your sandbox accounts, you will need them to make
     
     https://developer.paypal.com/dashboard/
 
-select "sandbox accounts" from there, you will use the "Business" account as the one receiving the money, and the "personal" for when your are making payment.
+Click on  "sandbox accounts" from there, you will use the "Business" account as the one receiving the money, and the "personal" account for when your are making payment. You can lookup their password by clicking on them.
 
 
 You will need to enable your Instant Payment Notification (IPN) in your paypal account.
@@ -102,9 +102,8 @@ Paypal_Paypals.sql  		will build the database Rental and the Tables
 Paypal_routines.sql     will build the stored procs.  
 
 
-
 # Step 4: Create The user database for the Rental database
-execute the following lines, or simply crete your user with the Workbench
+execute the following lines, or simply create your user with the Workbench
 
 mysql -u root --password
 (enter your mysql password, or if you haven't set password for MySQL server, type "mysql -u root" instead) You can even use MySQL Command Line Client on the Start menu on Windows. After login, create user, or if you prefer proceed to create you user via the Workbench, much easier!.
@@ -114,8 +113,7 @@ GRANT ALL PRIVILEGES ON YourDBUser.* TO 'Paypal'@'localhost';
 
 # Step 5: Configuring your Listener
 
-cd /var/www/{yourwebsite}/ipn/
-
+        cd /var/www/{yourwebsite}/ipn/
         sudo vi login.php
 
 You will need to provide the correct credential for your database
@@ -129,7 +127,7 @@ enable sandbox mode
 
          sudo vi ipnconf.php 
 
-make sure enable_sandbox is set to true in these first step, and specify your email(s) address that will be accepted, this should be your paypal email account that will receive the payment.
+make sure enable_sandbox is set to true in these first step, and specify your email(s) address that will be accepted, this should be your paypal email account that will receive the payment, so make sure you have your "business" sandbox email here to make your test.
 
          $enable_sandbox = true;
          $my_email_addresses = array("{mypaypalemail@example.com}", "{mysecondemail@example.com}");
@@ -148,8 +146,7 @@ this will tell to use the sandbox for your transaction, later when you tested ev
   edit the "!PaypalConfig" notecard in the Server component.
   
   otherwise edit the current "!PaypalConfig" in the component you want to test, 
-  for exemple the "Paypal Donations Box that come with the OSPaypalIpn Box"
-
+  for exemple the "Paypal TestBox that come with the OSPaypalIpn Box"
   
   Make sure the TestMode is set to 1, and that you write your "sandbox business email adress" given in your developer account .
   and notify_url points to your Listener https://{yourwebsite}/ipn/Listener.php
@@ -178,23 +175,22 @@ this will tell to use the sandbox for your transaction, later when you tested ev
         
 
 
-
  When ready, go inworld and  trigger some rentals, or paypal donations, or whatever you want to test with.
  When the paypal web page appear, simply proceed, enter your "sandbox personal email"  given in your developer account.
  after a few seconds yous should see the transactions completed if everything went ok.
  
  If everything went ok, you can do the ultimate test in looking in the database :
  
-         . select * from Paypal.Paypals order by Payment_date desc
+         . select * from Paypal.Paypal_Stats
 
  You should see your avatarname and amont paid on the first line.
 
  Some points to consider :
  
-         . The notify_url must be a https, so you must have configured your ssh on your website in order for this to work,  it will also reject anything that does not match your email address configured in step 2.
-             
-         . The InworkdIpn_Url will reject anything that does not come from local. you should reference InworldIpn_url with 127.0.0.1 as this is not accessible from outside.
-
+         . The notify_url must be a secured link (https), so you must have configured your ssl on your website in order for this to work, else it wont work.  
+         . Anything that does not match your email address configured in step 2 will be rejected.
+         . The InworkdIpn_Url will reject anything that does not come from local. 
+         . You should reference InworldIpn_url with 127.0.0.1 as this is not accessible from outside.
          . As stated per paypal, there could be some delay before you receive the IPN, could even take hours or days, so don't expect this to be instantaneous. For more information on how the timedout are defined inworld see the readme tha comes with the OSPaypalIpn package inworld.
   
 
