@@ -1,4 +1,4 @@
-﻿CREATE DATABASE  IF NOT EXISTS `Paypal` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `Paypal` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `Paypal`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
@@ -129,3 +129,16 @@ DELIMITER ;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-06-12 14:05:54
+
+
+
+/* ************************************************************* */
+/*     views                                                     */
+/* ************************************************************* */
+
+USE `Paypal`;
+CREATE  OR REPLACE VIEW `Paypal_Stats` AS
+
+Select Payment_Date, RegionName, Item_name, Item_Number, Invoice, payment_gross, AvatarName, payment_status
+ from  Paypal.Paypals
+order by Payment_date desc;
