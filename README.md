@@ -137,7 +137,7 @@ this will tell to use the sandbox for your transaction, later when you tested ev
 
 
 # Step 6: Opening the port on your OpenSim installation
-change the OpenSim.ini to allow the port connection (replacing the YOURPORT by the port number you want your service to run on):
+change the OpenSim.ini to allow the port connection for the InWorldIpn url:
 
 OutboundDisallowForUserScriptsExcept = 127.0.0.1
 then restart your region
