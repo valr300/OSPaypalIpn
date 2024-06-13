@@ -49,7 +49,8 @@ Note that for these steps and further down the road, you REALLY need to know wha
 # Step 1: Setting up your account
 
 Of course you need a Paypal account for that! If not already done, proceed by first signin up
-    https://www.paypal.com
+    
+    [https://www.paypal.com]
     
 You will also need to create a developer account on your paypal account, this will allow you to do some sandbox test (sign up if need be) :
 
