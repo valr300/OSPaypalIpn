@@ -50,15 +50,15 @@ Note that for these steps and further down the road, you REALLY need to know wha
 
 Of course you need a Paypal account for that! If not already done, proceed by first signin up
     
-    [https://www.paypal.com](url)
+    [https://www.paypal.com]([url](https://www.paypal.com))
     
 You will also need to create a developer account on your paypal account, this will allow you to do some sandbox test (sign up if need be) :
 
-    [https://developer.paypal.com/home](url)  
+    [https://developer.paypal.com/home]([url](https://developer.paypal.com/home))  
 
 once that is done, you can get your sandbox accounts, you will need them to make your test
     
-    [https://developer.paypal.com/dashboard/](url)
+    [https://developer.paypal.com/dashboard/]([url](https://developer.paypal.com/dashboard/))
 
 select "sandbox accounts" from there, you will use the "Business" account as the one receiving the money, and the "personal" for when your are making payment.
 
