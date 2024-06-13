@@ -136,9 +136,13 @@ make sure enable_sandbox is set to true in these first step, and specify your em
 this will tell to use the sandbox for your transaction, later when you tested everything and you are ready, you will have to set it to false to enable real tranactions.
 
 
+# Step 6: Opening the port on your OpenSim installation
+change the OpenSim.ini to allow the port connection (replacing the YOURPORT by the port number you want your service to run on):
 
+OutboundDisallowForUserScriptsExcept = 127.0.0.1
+then restart your region
 
-# Step 6: Your first test
+# Step 7: Your first test
 
 
  If you are installing this to use with your Rentals (Complete Rental System) :
@@ -207,7 +211,7 @@ If nothing happens and you get no error in the log :
   
 
 
-# Step 7: Hopefully you're still following and you got this far.
+# Step 8: Hopefully you're still following and you got this far.
 
 If you succeesfully tested and everything is ok... congratulation !
 
