@@ -98,18 +98,18 @@ make sure your web service can access the file. Acces  should be readable for ww
 # Step 3: Create the Database
 Execute the following script in your Database MySql, i would suggest using The WorkBench, gonna make your life much easier.
 
-Paypal_Paypals.sql  		will build the database Rental and the Tables
-Paypal_routines.sql     will build the stored procs.  
+    Paypal_Paypals.sql  	will build the database Rental and the Tables
+    Paypal_routines.sql     will build the stored procs.  
 
 
 # Step 4: Create The user database for the Rental database
 execute the following lines, or simply create your user with the Workbench
 
-mysql -u root --password
+    mysql -u root --password
 (enter your mysql password, or if you haven't set password for MySQL server, type "mysql -u root" instead) You can even use MySQL Command Line Client on the Start menu on Windows. After login, create user, or if you prefer proceed to create you user via the Workbench, much easier!.
 
-CREATE USER 'YourDBUser'@'localhost' IDENTIFIED BY 'YOURPASSWORD';
-GRANT ALL PRIVILEGES ON YourDBUser.* TO 'Paypal'@'localhost';
+    CREATE USER 'YourDBUser'@'localhost' IDENTIFIED BY 'YOURPASSWORD';
+    GRANT ALL PRIVILEGES ON YourDBUser.* TO 'Paypal'@'localhost';
 
 # Step 5: Configuring your Listener
 
@@ -168,11 +168,11 @@ then restart your region
         currency=USD                                      # Currency,  by default your account Currency will be used ex, if you are from US, no need to specify USD unless you want another currency.
         cmd=_xclick                                     # command type supported : _donations : Donate Button,   _xclick   : Buy now button  
         item_name=Rental                                   # Product identification  class
-        item_number=                                      # Product identification , will be the itemnumber of the parcel ( max 8 char)
+        item_number=                                      # Product identification , keep it short uner 8 char
         business={MySandboxEmailaddress@example.com}                # Email address used for paypal receiver, or in sandbox mode your sandbox business mail    
         return=                                                # Return page if any: Ex: return to your online catalog
         #
-        # ipn config : leave empty if you have'nt install the  github (https://github.com/valr300/paypalIpn) i.e paypal transactions wont be validated,  You'll have to check manually
+        # ipn config : leave empty if you have'nt install the  github (https://github.com/valr300/OsPaypalIpn) i.e paypal transactions wont be validated,  You'll have to check manually
         #
         notify_url=https://{yourwebsite}/ipn/Listener.php           # your server for ipn or empty if none ( must also be set through your account) ex: https://yourserver/ipn/Listener.php
         InworldIpn_url=http://127.0.0.1/ipn/InWorldIPN.php        # your server to complete transaction inworld    ex : http://127.0.0.1/ipn/InWorldIPN.php 
