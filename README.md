@@ -45,6 +45,19 @@ It should be compatible for windows and probably MariaDB, although I haven’t t
 
 Note that for these steps and further down the road, you REALLY need to know what you are doing, and taking these steps I took here won’t necessarily mean success on your installation. as your installation might be slightly different than mine, however, I think that if I show you what I did, it might help you find what you need to do, adapting these instructions to your own environment. And I am not responsible in any way shape or form on whatever you do on your system. Take backups before proceeding. 
 
+## Updating
+if you already installed this package, then proceed with updates .
+
+  1. Put the content of the "ipn" folder in  /var/www/{yourwebsite}/ipn :
+     
+         cd {the place you put the package}
+         sudo cp -r * /var/www/{yourwebsite}/ipn/
+     
+  2. install the appropriate script to go from your current version to the latest :
+  	update_db101.sql  to upgrade from 1.00 to 1.01
+
+You stop here, you should have the latest version.
+
 
 # Step 1: Setting up your account
 
