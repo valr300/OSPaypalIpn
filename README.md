@@ -54,7 +54,8 @@ if you already installed this package, then proceed with updates .
          sudo cp -r * /var/www/{yourwebsite}/ipn/
      
   2. install the appropriate script to go from your current version to the latest :
-  	update_db101.sql  to upgrade from 1.00 to 1.01
+  	
+         update_db101.sql  to upgrade from 1.00 to 1.01
 
 You stop here, you should have the latest version.
 
