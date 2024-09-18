@@ -234,7 +234,7 @@ If you succeesfully tested and everything is ok... congratulation !
          TestMode=0 
          business={Yourrealpaypypalemail}
          
- edit the "ipnconf.php" to enable real tranactions
+ edit the "ipnconf.php" to enable real transactions
  
          sudo vi ipnconf.php  
          
@@ -243,6 +243,27 @@ If you succeesfully tested and everything is ok... congratulation !
 
  Make sure your real email is set there in both, if your email is not there, the IPN will be silently ignored, the transactions will still work, but you wont get the notification. 
  Remember that when ever you want to test you need to set these 2  as Test or Live. If you only Enable test in one, it wont work. 
+
+
+
+ Additional notes:
+ -----------------
+ when ever you want to make some test later on : just do this :
+  edit the current "!PaypalConfig" in the component you want to set 
+  
+         TestMode=1 
+         business={Yourrealpaypypalemail}
+
+ edit the "ipnconf.php" to enable your test transactions, and make sure your email for test is steup there too.
+ 
+         sudo vi ipnconf.php  
+         
+         $enable_sandbox = true; 
+         $my_email_addresses = array("{mypaypalemail@example.com}", "{mysecondemail@example.com}");     
+
+and voila!  you can test, later on when your test are finished, dont forget to revert those back to TestMode=0, business email and $enable_sandbox=false;
+         
+         
 
 
 
